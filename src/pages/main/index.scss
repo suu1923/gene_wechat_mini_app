@@ -38,16 +38,16 @@
 
                 .nav-item {
                     min-height: 100% !important;
-                    padding    : 20rpx 0rpx;
-                    text-align : center;
+                    padding: 20rpx 0rpx;
+                    text-align: center;
 
                     // 重写的Grid样式
                     .at-grid__flex .content-inner__img {
                         width: 100rpx !important;
                         height: 100rpx !important;
                     }
-    
-                    .at-grid__flex .content-inner__text  {
+
+                    .at-grid__flex .content-inner__text {
                         font-size: 23rpx !important;
                         padding-bottom: 10rpx !important;
                         font-weight: 700 !important;
@@ -95,40 +95,20 @@
         .content {
             width: 90%;
             margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
 
-            .top {
-                background-repeat: no-repeat;
-                background-size: 100% 100%;
-                width: 100%;
-                margin-bottom: 20rpx;
+            .famous-nav-item {
+                width: 49%;
+                height: 222rpx;
+                border-radius: 15rpx;
+                margin-bottom: 15rpx;
 
-                .left {
-                    width: 50%;
-                    height: 470rpx;
-                    float: left;
-                }
-
-                .right {
-                    width: 50%;
-                    float: right;
-
-                    .r-1 {
-                        margin: 0rpx 0 10rpx 10rpx;
-                        height: 230rpx;
-                    }
-
-                    .r-2 {
-                        height: 230rpx;
-                        margin: 10rpx 0 0 10rpx;
-                    }
-                }
             }
 
-            .bottom {
-                width: 100%;
-                height: 250rpx;
-                margin-bottom: 20rpx;
-            }
         }
     }
 

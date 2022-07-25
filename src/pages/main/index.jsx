@@ -6,13 +6,8 @@ import { AtGrid } from "taro-ui"
 import "taro-ui/dist/style/components/flex.scss";
 import { getArticleList, getBanner, getNavList, queryFamousNavList } from './api'
 import tipPng from '../../resource/img/main/tip.png';
-import png1 from '../../resource/img/main/1.png';
-import png2 from '../../resource/img/main/2.png';
-import png3 from '../../resource/img/main/3.png';
-import png4 from '../../resource/img/main/4.png';
-import { startLoading, stopLoading, toPage } from '../../until/util';
+import { toPage } from '../../until/util';
 import "taro-ui/dist/style/components/grid.scss";
-import Skeleton from 'taro-skeleton';
 import 'taro-skeleton/dist/index.css'
 import { error, log } from '../../until/log';
 import Result from '../../components/result';
@@ -26,30 +21,35 @@ export default class Index extends Component {
       bannerErr: '',
       current: 0,
       navData: [],
-      artList: []
+      artList: [],
+      famousNavData: [],
+      famousNavDataErr: '',
     }
   }
 
 
   componentWillMount() {
+
+  }
+
+  componentDidMount() {
     // 调取接口首页
     this.getBannerData();
     // 获取导航
     this.getNavData();
     // 调取文章接口
     this.getArticleData();
-  }
-
-  componentDidMount(){
+    // 名人导航接口
     this.getFamousNavData();
   }
 
-  getFamousNavData = async() =>{
-    await queryFamousNavList().then(res=>{
-      console.log('导航2')
-      console.log(res.data)
-    }).catch(err=>{
-      console.log('获取失败')
+  getFamousNavData = async () => {
+    await queryFamousNavList().then(res => {
+      this.setState({
+        famousNavData: res.data
+      })
+    }).catch(err => {
+      this.setState({ famousNavDataErr: err })
     })
   }
 
@@ -68,8 +68,6 @@ export default class Index extends Component {
       pageSize: 3
     }
     await getArticleList(query).then((res) => {
-      console.log('获取文章')
-      console.log(res)
       this.setState({ artList: res.data.data })
 
     }).catch(err => {
@@ -79,8 +77,6 @@ export default class Index extends Component {
 
   getNavData = async () => {
     await getNavList().then((res) => {
-      console.log('获取导航栏')
-      console.log(res)
       let count_swiper = Array();
       const total_swiper = Math.ceil(res.data.length / 8);
       for (let i = 1; i <= total_swiper; i++) {
@@ -94,7 +90,7 @@ export default class Index extends Component {
       }
       this.setState({ navData: count_swiper })
     }).catch(err => {
-      console.log('报错啦')
+      console.log('导航栏错误')
       console.log(err)
     })
   }
@@ -110,7 +106,7 @@ export default class Index extends Component {
   }
 
   render() {
-    const { bannerData, bannerErr, navData, artList, display } = this.state;
+    const { bannerData, bannerErr, navData, artList, display, famousNavData, famousNavDataErr } = this.state;
     log('bannnerData', bannerData)
     return (
       <View className='index'>
@@ -144,7 +140,6 @@ export default class Index extends Component {
             }
           </View>
           <View className='nav'>
-
             <Swiper
               className='nav-box'
               indicatorColor='#999'
@@ -177,28 +172,18 @@ export default class Index extends Component {
               <Text className='text title'>名人推送</Text>
             </View>
           </View>
-          <View className='content at-row at-row--wrap at-row__justify--around'>
-            {/* 这里有个问题，如果配置放在了CSS中,编译后会转化为base64,进而增大打包后的体积 */}
-            <View className='top'>
-              <View className='left'
-                style={{ background: 'url(' + png1 + ')', backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%' }}
-                onClick={(e) => toPage('/pages/people_list/index?type=1')}
-              ></View>
-              <View className='right'>
-                <View className='r-1'
-                  style={{ background: 'url(' + png2 + ')', backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%' }}
-                  onClick={(e) => toPage('/pages/people_list/index?type=2')}
-                ></View>
-                <View className='r-2'
-                  style={{ background: 'url(' + png3 + ')', backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%' }}
-                  onClick={(e) => toPage('/pages/people_list/index?type=3')}
-                ></View>
-              </View>
-            </View>
-            <View className='bottom'
-              style={{ background: 'url(' + png4 + ')', backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%' }}
-              onClick={(e) => toPage('/pages/people_list/index?type=4')}
-            ></View>
+          <View className='content'>
+            {
+              famousNavDataErr == '' ?
+                famousNavData != [] ? (
+                  famousNavData.map((item, index) => {
+                    return (
+                      <View className='famous-nav-item' style={{ background: 'url(' + item.image + ')', backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%' }} onClick={(e) => toPage('/pages/people_list/index?type' + item.url)}></View>
+                    )
+                  })
+                ) : (<Result type='2' />)
+                : <Result content={famousNavDataErr} />
+            }
           </View>
         </View>
 
