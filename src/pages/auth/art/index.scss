@@ -1,0 +1,38 @@
+.container {
+    height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+
+    margin: 0 auto;
+
+    .content {
+        width: 90%;
+        margin: 0 auto;
+
+        .input {
+            .at-input__title {
+                font-size: 27rpx;
+                font-family: 'PingFang SC-Bold; PingFang SC';
+            }
+
+            .at-input--disabled {
+                opacity: 1;
+            }
+
+        }
+
+        .at-input {
+            margin-left: 0 !important;
+        }
+
+        .to_submit {
+            background-color: $primaryColor;
+            text-align: center;
+            font-size: 30rpx;
+            color: #FFFFFF;
+            border-radius: 15rpx;
+            margin-top: 50rpx;
+        }
+    }
+}

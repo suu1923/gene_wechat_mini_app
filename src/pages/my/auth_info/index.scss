@@ -1,0 +1,29 @@
+.at-list__item-extra{
+    max-width: 100% !important;
+}
+.at-input__title{
+    margin-left: 24rpx !important; 
+}
+.at-input{
+    margin-left: 0 !important;
+}
+.container{
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    min-height: 100vh;
+    padding: 0 50rpx;
+    .content{
+        // width: 90%;
+        margin: 0 auto;
+        .to_submit{
+            width: 100%;
+            margin: 0 auto;
+            background-color: #9D0202;
+            text-align      : center;
+            font-size       : 30rpx;
+            color           : #FFFFFF;
+            border-radius   : 15rpx;
+            margin-top      : 50rpx;
+        }
+    }
+}

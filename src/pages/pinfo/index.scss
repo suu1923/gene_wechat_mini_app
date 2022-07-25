@@ -1,0 +1,279 @@
+$contentColor: #F4ECDF;
+
+.contrainer {
+    background-repeat: repeat-y;
+    background-size: 100% 100%;
+    min-height: 100vh;
+    height: 100%;
+
+    .box {
+        width: 88%;
+        margin: 0 auto;
+        padding: 20rpx;
+        background-color: #FFFFFF;
+
+        .showmore {
+            width: 100%;
+            height: 80rpx;
+            // border: 1px solid red;
+            background: linear-gradient(to bottom, #ffffff, #989898);
+            text-align: center;
+
+            .tips {
+
+                font-size: 70rpx;
+                color: #f31212;
+                line-height: 80rpx;
+            }
+
+        }
+
+
+        .info {
+            padding: 0 20rpx 20rpx 20rpx;
+            border-bottom: 1px solid #cccccc;
+            border-top: 1px solid #cccccc;
+
+            .tab {
+                color: red;
+            }
+
+
+
+            .item {
+                min-height: 300rpx;
+                margin: 0 auto;
+                padding-top: 20rpx;
+                padding-bottom: 10rpx;
+                background-color: #fff6;
+                border-radius: 15rpx;
+                color: #333333
+            }
+
+            // 重写的部分
+            .at-tabs__item {
+                width: 20% !important;
+                color: #999999 !important;
+            }
+
+            .at-tabs__item--active {
+                color: rgb(0, 0, 0) !important;
+                font-weight: bold;
+            }
+
+            .at-tabs__item-underline {
+                background-color: #9D0202 !important;
+                left: 50% !important;
+                width: 40% !important;
+                margin-left: -20% !important;
+                height: 2PX !important;
+            }
+
+            .info {
+                float: left !important;
+            }
+        }
+
+        .relation {
+
+            margin-top: 20rpx;
+
+            .r-header {
+                height: 50rpx;
+
+                .left {
+                    float: left;
+
+                    .img {
+                        width: 50rpx;
+                        height: 50rpx;
+                        vertical-align: middle;
+                    }
+
+                    .text {
+                        margin-left: 10rpx;
+                        font-weight: bold;
+                    }
+                }
+
+                .right {
+                    float: right;
+                    color: rgb(0, 0, 0);
+                    display: table-cell;
+                    vertical-align: middle;
+
+                    .lable-dot {
+                        width: 35rpx;
+                        height: 35rpx;
+                        border: 1rpx solid $primaryColor;
+                        border-radius: 50%;
+                        margin: 5rpx auto;
+                        display: inline-block;
+                        text-align: center;
+                        color: $primaryColor;
+                        font-size: 25rpx;
+                        margin-right: 10rpx;
+                    }
+                }
+            }
+        }
+
+        .content {
+            height: 100%;
+            margin-bottom: 30rpx;
+
+            .lifes {
+                height: 200rpx;
+                text-align: center;
+                margin: 20rpx 0;
+
+                &:first-child {
+                    .item-life>.text {
+                        background-color: $contentColor;
+                        color: $primaryColor;
+                    }
+                }
+
+                &:last-child {
+                    .item-life>.text {
+                        background-color: $contentColor;
+                        color: $primaryColor;
+                    }
+
+                    margin-bottom: 40rpx;
+                }
+
+                .item-life {
+                    flex-direction: column;
+                    height: 100%;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+
+                    border :1px solid $primaryColor;
+                    border-radius: 10rpx;
+
+                    .text {
+
+                        font-size: 33rpx;
+                        background-color: $primaryColor;
+                        border-radius: 10rpx;
+                        writing-mode: vertical-rl;
+                        height: 178rpx;
+                        text-align: center;
+                        margin: 10rpx 0;
+                        border: 1px solid $primaryColor;
+                        color: #FFFFFF;
+
+                    }
+                }
+
+                .item-info {
+                    margin-left: 10rpx;
+                    overflow-x: scroll;
+                    overflow-y: hidden;
+                    display: flex;
+
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+
+                    .info-box {
+                        flex-shrink: 0;
+                        margin: 10rpx;
+                        height: 178rpx;
+                        text-align: center;
+                        border: none;
+                        background-color: #FAF3EBFF;
+                        border-radius: 15rpx;
+                        margin-top: 14rpx;
+
+                        // 名字
+                        .name {
+                            float: left;
+                            width: 20rpx;
+                            font-size: 26rpx;
+                            font-family: 'PingFang SC-Bold; PingFang SC';
+                            font-weight: bold;
+                            color: #824504;
+                            line-height: 32rpx;
+                            padding: 10rpx;
+                            text-align: center;
+                            overflow: hidden;
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            flex-direction: column;
+                            margin: 0 8rpx;
+                        }
+
+                        // 小圆点-代表性别
+                        .label-dot {
+                            width: 10rpx;
+                            height: 10rpx;
+                            border: 1px solid #824504;
+                            border-radius: 50%;
+                            margin: 5px auto;
+                        }
+
+                        // 企业、名人等带有圆圈的标注
+                        .label-special {
+                            width: 22rpx;
+                            height: 22rpx;
+                            font-family: "PingFang SC-Bold; PingFang SC";
+                            border: 1rpx solid #824504;
+                            color: #824504;
+                            border-radius: 50%;
+                            display: block;
+                            line-height: 19rpx;
+                            font-size: 18rpx;
+                            text-align: center;
+                            margin-top: 5rpx;
+                        }
+
+                        .wife {
+                            width: 50rpx;
+                            height: 100%;
+                            float: left;
+                            font-size: 26rpx;
+                            font-family: 'PingFang SC-Medium, PingFang SC';
+                            font-weight: bold;
+                            color: #824504;
+                            line-height: 32rpx;
+                            font-weight: 600;
+                            padding: 0 20rpx;
+                            display: flex;
+                            justify-content: center;
+                            align-content: stretch;
+                            flex-wrap: nowrap;
+                            flex-direction: row;
+                            border-right: 1px dashed #824504;
+
+                            .label-wife-son {
+                                margin-top: 10rpx;
+                                margin-right: 10rpx;
+                            }
+                        }
+
+                        // 描述
+                        .desc {
+                            float: left;
+                            -webkit-writing-mode: vertical-rl;
+                            writing-mode: vertical-rl;
+                            text-align: left;
+                            font-size: 24rpx;
+                            color: #D1A263;
+                            align-content: stretch;
+                            align-items: center;
+                            font-weight: normal;
+                            margin-left: 10rpx;
+                            padding: 10rpx 0;
+                            overflow: hidden;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

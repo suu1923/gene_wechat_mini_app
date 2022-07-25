@@ -1,0 +1,33 @@
+.container {
+    height             : 100vh;
+    width              : 100%;
+    background-repeat  : repeat-y;
+    background-size: 100% 100%;
+    margin: 0 auto;
+    .content {
+        height: 96%;
+        padding: 10rpx 40rpx;
+        background-color: #FFFFFF;
+        font-size: 26rpx;
+
+        .to_submit {
+            background-color: #9D0202;
+            text-align      : center;
+            font-size       : 30rpx;
+            color           : #FFFFFF;
+            border-radius   : 15rpx;
+            margin-top      : 50rpx;
+        }
+    }
+}
+
+.form-control > .label > .require {
+    top: 35rpx;
+}
+.at-image-picker__flex-item :first-child{
+    margin-left: 0rpx !important
+}
+.at-image-picker__flex-box {
+    padding: 20rpx 0 !important;
+}
+

@@ -1,0 +1,133 @@
+.container {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100vh;
+
+    .header {
+        background: url('../../resource/my_bg.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        height: 40%;
+
+        .avatar {
+            padding-top: 15%;
+
+            .image {
+                display: block;
+                width: 150rpx;
+                height: 150rpx;
+                margin: 0 auto;
+                margin-bottom: 0;
+                border-radius: 50%;
+            }
+        }
+
+        .name {
+            text-align: center;
+            color: #FFFFFF;
+            font-size: 30rpx;
+            font-weight: 600;
+            margin-top: 30rpx;
+
+            .text {
+                border: 1px solid #FFFFFF;
+                padding: 10rpx 20rpx;
+                border-radius: 10rpx;
+            }
+        }
+    }
+
+    .bind_phone_container {
+        .at-button {
+            background-color: $primaryColor  !important;
+            color: #FFFFFF !important;
+            border: none
+        }
+
+        .bind_btn {
+            margin-bottom: 20rpx;
+        }
+
+        .agreenment {
+            float: left;
+        }
+
+        .tips {
+            line-height: 40rpx;
+            float: left;
+        }
+        .spec {
+            line-height: 40rpx;
+            color: $primaryColor;
+        }
+    }
+}
+
+.content {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20rpx;
+
+    .item {
+        margin-top: 10rpx;
+        margin-bottom: 10rpx;
+        padding: 10rpx 20rpx;
+
+        .box {
+            .icon {
+                text-align: right;
+
+                .image {
+                    width: 66rpx;
+                    height: 66rpx;
+                }
+            }
+
+            .text {
+                font-family: 'PingFang SC-Medium, PingFang SC';
+                line-height: 66rpx;
+                border-bottom: 1px solid #E6E6E6;
+                color: rgba(51, 51, 51, 1);
+
+                .label {
+                    text-indent: 22px;
+                    float: left;
+                    font-weight: 600;
+                }
+
+                .mark {
+                    font-size: 36rpx;
+                    transform: scale(1, 1.5);
+                    color: rgba(102, 102, 102, 0.9);
+                    float: right;
+                }
+            }
+        }
+    }
+
+}
+
+/*checkbox 整体大小  */
+checkbox {
+    box-sizing: border-box;
+}
+
+/* 未选中的 背景样式 */
+checkbox .wx-checkbox-input {
+    border-radius: 50%;
+    /* 圆角 */
+    box-sizing: border-box;
+}
+
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+    border-radius: 50%;
+    border-color: $primaryColor  !important;
+}
+
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+    color: $primaryColor;
+    border-radius: 50%;
+}

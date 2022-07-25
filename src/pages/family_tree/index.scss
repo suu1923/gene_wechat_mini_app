@@ -1,0 +1,260 @@
+// 全局变量，最后换成一个文件的
+$contentColot: #FFF3E5;
+
+.index {
+    scroll: none;
+
+    .header {
+        height: 80rpx;
+        width: 100%;
+        line-height: 80rpx;
+
+        .text {
+            display: flex;
+
+            .img {
+                width: 40rpx;
+                height: 40rpx;
+                vertical-align: middle;
+            }
+
+            .title {
+                color: $primaryColor;
+                font-size: 34rpx;
+                font-weight: bold;
+            }
+        }
+
+        .search-box {
+            .at-search-bar::after {
+                border: none !important
+            }
+
+            .search {
+                .at-search-bar__action {
+                    background-color: $primaryColor  !important;
+                }
+            }
+        }
+    }
+
+    .content {
+        height: calc(100vh - 80rpx);
+
+        .info {
+            height: 100%;
+            padding-left: 4rpx;
+            position: relative;
+            background-color: #F7F7F7;
+
+            .years {
+                width: 50%;
+                height: 100%;
+                background: url('../../resource/l_year.png');
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                position: relative;
+
+                .years-content {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    left: 0;
+                    margin: auto;
+                    height: 96%;
+
+                    .item-year {
+                        height: calc(100% / 5);
+                        width: 70%;
+                        margin: 0 auto;
+                        text-align: center;
+
+                        .text {
+                            border-radius: 10rpx;
+                            position: relative;
+                            top: 40%;
+                            margin-top: -100%;
+                            writing-mode: vertical-rl;
+                            padding-top: 30rpx;
+                            padding-bottom: 30rpx;
+                            border: 1px solid $primaryColor;
+                            color: $primaryColor;
+                            transform: rotate(-180deg);
+
+                            .spec {
+                                display: inline-block;
+                                transform: rotate(90deg);
+                                padding-top: 5rpx;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .lifes {
+                .lifes-content {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    left: 90rpx;
+                    height: 96%;
+                    margin: auto;
+                    background-color: #F7F7F7;
+
+                    .item-life {
+                        background-color: #ffffff;
+                        height: calc((100% / 5) - 12rpx);
+                        margin: 10rpx 0;
+                        border: 1rpx solid #ffffff00;
+
+                        &:first-child {
+                            margin-top: 0;
+                        }
+
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+
+                        position :relative;
+
+                        .item-life-box {
+                            border: 1px solid $primaryColor;
+                            border-radius: 10rpx;
+                            height: 100%;
+                            width: 55%;
+                            margin: 0 auto;
+
+                            .text {
+                                background-color: $contentColot;
+                                border-radius: 10rpx;
+                                writing-mode: vertical-rl;
+                                height: 95%;
+                                position: absolute;
+                                left: 50%;
+                                top: 50%;
+                                transform: translate(-50%, -50%);
+                                text-align: center;
+                                border: 1px solid $primaryColor;
+                                color: $primaryColor;
+
+                                .spec {
+                                    border: 1px solid $primaryColor;
+                                    margin-top: 10rpx;
+                                    width: 90%;
+                                    height: 90%;
+                                    font-size: 23rpx;
+                                    border-radius: 10rpx;
+                                    padding-top: 4rpx;
+                                    padding-bottom: 4rpx;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .tree {
+
+            height: calc(100vh - 80rpx);
+
+            background-color: #F7F7F7;
+
+            position: relative;
+
+            .tree-content {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                height: 96%;
+                margin: auto;
+
+                .item-rank {
+                    height: calc((100% / 5) - 12rpx);
+
+                    // display: flex;
+                    
+                    background-color: #ffffff;
+                    margin: 10rpx 0;
+                    border: 1px solid #ffffff00;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+
+
+
+                    // 滚动条
+                    // overflow-x: scroll;
+                    // overflow-y: hidden;
+
+                    // &::-webkit-scrollbar {
+                    //     display: none;
+                    // }
+                    
+                    white-space: nowrap;
+
+                    .info-box {
+                        min-width: 60rpx;
+                        // width: 60rpx;
+                        // flex-shrink: 0;
+                        height: 90%;
+                        margin: 10rpx;
+                        text-align: center;
+                        border: none;
+                        background-color: #FFF3E5;
+                        border-radius: 15rpx;
+                        margin-top: 14rpx;
+                        overflow: hidden;
+
+                        display: inline-block;
+
+                        // 名字
+                        .name {
+                            float: left;
+                            width: 30rpx;
+                            font-size: 26rpx;
+                            font-family: 'PingFang SC-Bold; PingFang SC';
+                            font-weight: bold;
+                            color: #824504;
+                            overflow: hidden;
+                            margin: 10rpx;
+                            white-space: break-spaces;
+                        }
+
+                        // 小圆点-代表性别
+                        .label-dot {
+                            width: 13rpx;
+                            height: 13rpx;
+                            border-radius: 50%;
+                            margin: 13rpx auto;
+                        }
+
+                        .abbrs {
+                            float: left;
+                            margin: 10rpx;
+
+                            .label-abbr {
+                                font-size: 20rpx;
+                                width: 35rpx;
+                                height: 35rpx;
+                                border-radius: 50%;
+                                margin: 10rpx auto;
+                                text-align: center;
+                                line-height: 35rpx;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+.container {
+    background-repeat: repeat-y;
+    background-size  : 100% 100%;
+    min-height          : 100vh;
+    .content {
+        width: 90%;
+        padding: 20rpx;
+        min-height          : calc(100vh-20rpx);
+        margin          : 0 auto;
+        border-radius   : 10rpx;
+        .info {
+            margin-top: 30rpx;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+.container {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    min-height: 100vh;
+
+    .content {
+        width: 90%;
+        background-color: #fff6;
+        // height          : 100%;
+        margin: 0 auto;
+        border-radius: 10rpx;
+
+        .info {
+            padding: 30rpx 50rpx;
+        }
+    }
+}

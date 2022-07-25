@@ -1,0 +1,51 @@
+.container {
+    background-repeat: repeat-y;
+    background-size  : 100% 100%;
+    padding-top: 20rpx;
+    min-height          : 100vh;
+    height: auto;
+    .content {
+        width: 90%;
+        padding: 20rpx;
+        background-color: #FFFFFFFF;
+        min-height          : calc(100vh-20rpx);
+        margin          : 0 auto;
+        border-radius   : 10rpx;
+        .title{
+            font-weight: bold;
+            font-size: 40rpx;
+        }
+        img{
+            text-align: center;
+            border-radius: 24rpx;
+        }
+        .info {
+            margin-top: 30rpx;
+        }
+    }
+    .operate{
+        position: fixed;
+        bottom: 0;
+        height: 130rpx;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+
+        .box{
+            width: 90%;
+            margin: 0 auto;
+            margin-top: 20rpx;
+            .comment-content{
+                border-radius: 8rpx;
+                background-color: whitesmoke;
+                height: 52rpx;
+                padding-left: 10px;
+                padding-top: 8rpx;
+            }
+            .like,.favorite{
+                text-indent: 10px;
+                line-height: 50rpx;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,35 @@
+.container{
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    min-height: 100vh;
+    .content {
+        width: 90%;
+        margin: 0 auto;
+        height: auto;
+        // margin-top: 20rpx;
+        .item{
+            margin: 20rpx 0;
+            background-color: rgb(255, 255, 255);
+            border-radius: 15rpx;
+            text-align: center;
+            font-family: 'PingFang SC-Medium, PingFang SC';
+            .image-box{
+                margin-top: 20rpx;
+                .image{
+                    width: 110rpx;
+                    height: 110rpx;
+                }
+            }
+            .name {
+                margin-top: 10rpx;
+            }
+            .desc{
+                color: rgba(153, 153, 153, 1);
+                font-size: 25rpx;
+                margin-bottom: 15rpx;
+            }
+
+        }
+    }
+}

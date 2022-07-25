@@ -1,0 +1,83 @@
+.container {
+    background-repeat: no-repeat;
+    background-size  : 100% 100%;
+    min-height: 100vh;
+
+    .content {
+        width : 90%;
+        height: 100vh;
+        margin: 0 auto;
+        overflow-y: scroll;
+        padding-top   : 20rpx;
+        padding-bottom: 30rpx;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        .item {
+            &:first {
+                margin-top: 0;
+            }
+
+            padding: 20rpx;
+
+            border-radius: 8rpx;
+
+
+            margin-top    :40rpx;
+            padding-bottom: 40rpx;
+
+            background-color: #fff6;
+
+
+            .content2 {
+                height: 100%;
+
+                .title {
+                    font-weight: bold;
+                    font-size  : 34rpx;
+
+                    overflow: hidden;
+
+                    .dot {
+                        margin-left: 10rpx;
+                        margin-right: 10rpx;
+                        width: 10rpx;
+                        height: 10rpx;
+                        display: inline-block;
+                        background: red;
+                        border-radius: 50%;
+                        line-height: 10rpx;
+                        color: #ffffff00;
+                    }
+                }
+
+                .desc {
+                    margin-top    : 15rpx;
+                    word-wrap     : break-word;
+                    word-break    : break-all;
+                    font-size     : 28rpx;
+                    font-family   : 'PingFang SC-Regular, PingFang SC';
+                    padding-bottom: 30rpx;
+                    border-bottom : 1px solid #F2F2F2;
+                }
+
+                .text {
+                    display      : block;
+                    padding-top  : 20rpx;
+                    color        : #999999;
+                    margin-bottom: 10rpx;
+                    font-size    : 26rpx;
+
+                    .publicser {
+                        float: left;
+                    }
+
+                    .createtime {
+                        float: right;
+                    }
+                }
+            }
+        }
+
+    }
+}

@@ -1,0 +1,19 @@
+.err-content {
+    width: 100%;
+    // height: 100%;
+    text-align: center;
+    .err-image {
+        
+        height: 70%;
+        image {
+            width: 200rpx;
+            height: 200rpx;
+        }
+    }
+
+    .err-tips {
+        color: #999999;
+        font-family: PingFang SC-Medium, PingFang SC;
+        font-weight: 500;
+    }
+}
