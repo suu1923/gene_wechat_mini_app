@@ -40,7 +40,7 @@ export const chunk = (arr, size) => {
  * @returns 
  */
 export const toChinesNum = (num) => {
-  
+
   let changeNum = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖']
   let unit = ['', '拾', '佰', '千', '萬']
   num = parseInt(num)
@@ -122,10 +122,10 @@ import { getBg } from "./servers";
  * 上传文件
  */
 export const uploadFile = (tempFilePaths) => {
-  console.log(getBaseUrl('/api/')+'/api/common/upload');
+  console.log(getBaseUrl('/api/') + '/api/common/upload');
 
   return Taro.uploadFile({
-    url: getBaseUrl('/api/')+'/api/common/upload',
+    url: getBaseUrl('/api/') + '/api/common/upload',
     // url: getBaseUrl('') + '/api/common/upload',
     filePath: tempFilePaths,
     name: 'file',
@@ -154,7 +154,7 @@ export const pageBack = () => {
 export const globalBg = () => {
   if (Taro.getStorageSync('bg_url') == '' || Taro.getStorageSync('bg_url') == null) {
     getBg().then(res => {
-      log('背景图',res)
+      log('背景图', res)
       Taro.setStorageSync('bg_url', res.data)
     }).catch(err => {
       console.log(err)

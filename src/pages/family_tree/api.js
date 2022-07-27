@@ -4,11 +4,11 @@ export const getFamilyData = (data) => {
     return get('/api/family/index',{...data});
 }
 
+/**
+ * @desc 获取全部年份
+ * @returns 
+ */
 export const queryAllYear = () => {
-    return get('/api/family/getAllYear');
-}
-
-export const getAllYear = () =>{
     return get('/api/family/getAllYear');
 }
 

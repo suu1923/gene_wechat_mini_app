@@ -49,3 +49,10 @@ export const checkAuthRealName = () => {
 export const queryAuthInfo = () => {
     return post('/api/user/checkAuth')
 }
+
+/**
+ * @desc 获取全部年份  xx-xx格式
+ */
+export const queryAllAYearByAuth = () => {
+    return post('/api/family/getAllYearByAuth')
+}

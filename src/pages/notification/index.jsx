@@ -25,8 +25,9 @@ export default class Index extends Component {
 
     componentWillMount() {
         queryMyNotification().then(res => {
+            console.log(res)
             this.setState({
-                notificationList: res.data.data,
+                notificationList: res.data,
                 loading: false
             })
 
@@ -59,7 +60,7 @@ export default class Index extends Component {
                     <View className='content'>
                         {
                             this.state.errFlag === false ? (
-                                notificationList.length > 0 ? (
+                                notificationList != [] ? (
                                     notificationList.map((item, index) => {
                                         return (
                                             <View className='item'>

@@ -147,18 +147,16 @@ export default class Index extends Component {
     })
   }
 
+  // 移动开始
   touchStart(e) {
     e.preventDefault()
-    // log('开始滑动X', e.touches[0].pageX)
-    // log('开始滑动Y', e.touches[0].pageY)
     this.setState({
       startX: e.touches[0].pageX,
       startY: e.touches[0].pageY
     })
   }
+  // 移动结束
   touchMove(e) {
-    // log('滑动中X',e.touches[0].pageX)
-    // log('滑动中Y',e.touches[0].pageY)
     this.setState({
       isStatus: true,
       endX: e.touches[0].pageX,
@@ -228,8 +226,6 @@ export default class Index extends Component {
     const allData = this.state.familyData
     let showCurrentPage = this.state.showCurrentPage
 
-    // log('当前触底的全部数据', this.state.familyData[index])
-    // log('当前触底的显示数据', this.state.showFamilyData[index])
     /*
     显示数据追加
     获取后10条
@@ -247,7 +243,6 @@ export default class Index extends Component {
     // 拿到下一个要展示的数据
     const nextStartLimit = currentPage * pageSize,
       nextEndLimit = nextPage * pageSize
-
 
     if (nextEndLimit >= allData[index].length) {
       log('全部加载完毕')

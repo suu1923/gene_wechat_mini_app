@@ -6,8 +6,8 @@ import './index.scss'
 import "taro-ui/dist/style/components/action-sheet.scss";
 
 import Taro from '@tarojs/taro';
-import { getAllYear, getUserListByRank } from '../../family_tree/api';
-import { getStorageValue, iShowToast } from '../../../until/util';
+import { getUserListByRank } from '../../family_tree/api';
+import { getStorageValue, iShowToast, pageBack } from '../../../until/util';
 
 import 'form-taro3-react/dist/styles/index.scss'
 
@@ -18,7 +18,8 @@ import {
   FormTextArea,
   FormTextInput
 } from 'form-taro3-react';
-import { checkAuthRealName, submitAuthData } from '../api';
+import { checkAuthRealName, queryAllAYearByAuth, submitAuthData } from '../api';
+import Result from '../../../components/result';
 
 export default class Index extends Component {
 
@@ -35,29 +36,25 @@ export default class Index extends Component {
       currentRanksData: '',
       currentRanksDataChecked: {},
       desc: '',
-      // form: createFactory
-      // :{}
     }
     this.formRef = createRef()
   }
 
-
-  componentWillMount() {
+  componentDidMount() {
     // const has_reg = this.checkUserAuth();
     checkAuthRealName().then(res => {
-      console.log(res)
       if (res.data != true) {
         // 没有注册，展示注册窗体
         this.setState({ show_reg: res.data.data })
         // 调用接口
-        getAllYear().then(res => {
+        queryAllAYearByAuth().then(res => {
           let allNumer = Array();
           // 倒序输出
           let ranksData = res.data.reverse();
-          ranksData.map((item) => {
+          ranksData.map((item, index) => {
             allNumer.push({
-              key: item.key,
-              value: item.value,
+              key: ranksData.length - index,
+              value: item,
             })
           })
           // 选择器所用到的数据
@@ -107,7 +104,6 @@ export default class Index extends Component {
         allUser.push(_item)
       })
       // 默认值
-      console.log(allUser)
       this.setState({
         currentRanksData: allUser,
         currentRanksDataChecked: {
@@ -157,10 +153,14 @@ export default class Index extends Component {
 
       submitAuthData(data).then(res => {
         iShowToast(res.msg)
+        setTimeout(() => {
+          pageBack()
+        }, 1500)
       }).catch(err => {
         iShowToast(err, 'error')
       })
     }).catch((error) => {
+      iShowToast(error)
     });
   }
   render() {
@@ -172,7 +172,11 @@ export default class Index extends Component {
             <View className='content'>
               <CustomizeForm
                 ref={this.formRef}
-                defaultValue={{ gender: "1" }}
+                defaultValue={{
+                  gender: "1",
+                  wife: '',
+                  desc: ''
+                }}
                 onValueChange={(diff) => {
                 }}
               >
@@ -244,7 +248,7 @@ export default class Index extends Component {
             </View>
           ) : (
             <View className='content'>
-                档案信息已完善
+              <Result type={2} content="您的档案信息已完善" />
             </View>
           )
         }

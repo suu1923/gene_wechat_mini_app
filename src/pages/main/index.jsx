@@ -24,12 +24,9 @@ export default class Index extends Component {
       artList: [],
       famousNavData: [],
       famousNavDataErr: '',
+      lineNav: [],
+      lineNavErr: []
     }
-  }
-
-
-  componentWillMount() {
-
   }
 
   componentDidMount() {
@@ -77,18 +74,23 @@ export default class Index extends Component {
 
   getNavData = async () => {
     await getNavList().then((res) => {
+
+
       let count_swiper = Array();
-      const total_swiper = Math.ceil(res.data.length / 8);
+      const total_swiper = Math.ceil(res.data.top.length / 8);
       for (let i = 1; i <= total_swiper; i++) {
         let current_swiper = Array()
-        res.data.map((item, index) => {
+        res.data.top.map((item, index) => {
           if (i == Math.ceil((index + 1) / 8)) {
             current_swiper.push(item)
           }
         })
         count_swiper.push(current_swiper)
       }
-      this.setState({ navData: count_swiper })
+      this.setState({
+        navData: count_swiper,
+        lineNav: res.data.bottom
+      })
     }).catch(err => {
       console.log('导航栏错误')
       console.log(err)
@@ -98,7 +100,7 @@ export default class Index extends Component {
 
   navToPage(item) {
     // 直接跳转页面
-    if (item.type == 1) {
+    if (item.type != 2) {
       toPage('/common/pages/single_page/index?id=' + item.id + '&title=' + item.value)
     } else {
       toPage(item.url)
@@ -106,7 +108,7 @@ export default class Index extends Component {
   }
 
   render() {
-    const { bannerData, bannerErr, navData, artList, display, famousNavData, famousNavDataErr } = this.state;
+    const { bannerData, bannerErr, navData, artList, display, famousNavData, famousNavDataErr, lineNav } = this.state;
     log('bannnerData', bannerData)
     return (
       <View className='index'>
@@ -169,7 +171,7 @@ export default class Index extends Component {
           <View className='header'>
             <View className='left'>
               <Image src={tipPng} className='img'></Image>
-              <Text className='text title'>名人推送</Text>
+              <Text className='text title'>名人馆</Text>
             </View>
           </View>
           <View className='content'>
@@ -178,7 +180,7 @@ export default class Index extends Component {
                 famousNavData != [] ? (
                   famousNavData.map((item, index) => {
                     return (
-                      <View className='famous-nav-item' style={{ background: 'url(' + item.image + ')', backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%' }} onClick={(e) => toPage('/pages/people_list/index?type' + item.url)}></View>
+                      <View className='famous-nav-item' style={{ background: 'url(' + item.image + ')', backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%' }} onClick={(e) => toPage('/pages/people_list/index?type=' + item.url)}></View>
                     )
                   })
                 ) : (<Result type='2' />)
@@ -187,6 +189,24 @@ export default class Index extends Component {
           </View>
         </View>
 
+        {/* 新模块,也是单页面内容 */}
+        {lineNav != [] && (
+          <View className='line-box'>
+            {
+              lineNav.map((item, index) => {
+                return (
+                  <View
+                    className='line-item'
+                    onClick={
+                      e => this.navToPage(item)
+                    }>
+                    <Image src={item.image} />
+                  </View>
+                )
+              })
+            }
+          </View>
+        )}
 
         {/* 第三个模块，文章 */}
         <View className='article-box'>
