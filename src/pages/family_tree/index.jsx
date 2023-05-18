@@ -104,21 +104,20 @@ export default class Index extends Component {
         item_arr.value = toChinesNum(item_start) + '世~' + toChinesNum(item_end) + '世'
         selectData.push(item_arr)
       })
-
       this.setState({
         // 选择器显示的
         yearSelector: selectData,
         // 选择器默认值
-        yearSelectorChecked: selectData[selectData.length - 1],
+        yearSelectorChecked: selectData[0],
         // 请求过来的默认数据
         data: res.data,
         totalPage: selectData.length,
         currentPage: selectData.length
       })
-      this.changeLeftData(selectData[selectData.length - 1])
+      this.changeLeftData(selectData[0])
 
       // 渲染树
-      this.getTreeData(selectData[selectData.length - 1]['key'])
+      this.getTreeData(selectData[0]['key'])
     })
   }
 

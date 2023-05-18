@@ -11,6 +11,7 @@ import "taro-ui/dist/style/components/grid.scss";
 import 'taro-skeleton/dist/index.css'
 import { error, log } from '../../until/log';
 import Result from '../../components/result';
+import Taro from '@tarojs/taro';
 
 export default class Index extends Component {
 
@@ -38,6 +39,15 @@ export default class Index extends Component {
     this.getArticleData();
     // 名人导航接口
     this.getFamousNavData();
+
+    // 测试
+    Taro.request({
+      url:'http://192.168.1.42/test/public/',
+      success: function(res){
+        console.log('本地数据')
+        console.log(res.data)
+      }
+    })
   }
 
   getFamousNavData = async () => {
