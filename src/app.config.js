@@ -17,7 +17,9 @@ export default defineAppConfig({
     'pages/my/auth_info/index',
     'pages/auth_info/index',
     'pages/agreement/index',
-    'pages/notification/index'
+    'pages/notification/index',
+    'pages/family_new/index',
+    'pages/family_new/new_tree/index'
   ],
   "subPackages": [
     {
@@ -42,7 +44,7 @@ export default defineAppConfig({
     }, {
       'iconPath': 'resource/gene.png',
       'selectedIconPath': 'resource/gene_on.png',
-      pagePath: 'pages/family_tree/index',
+      pagePath: 'pages/family_new/index',
       text: '族谱'
     },
     {
