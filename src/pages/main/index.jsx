@@ -1,17 +1,15 @@
 import { Component } from 'react'
 import { View, Text, Swiper, SwiperItem, Image } from '@tarojs/components'
-import './index.scss';
 import { AtGrid } from "taro-ui"
-
-import "taro-ui/dist/style/components/flex.scss";
 import { getArticleList, getBanner, getNavList, queryFamousNavList } from './api'
 import tipPng from '../../resource/img/main/tip.png';
 import { toPage } from '../../until/util';
-import "taro-ui/dist/style/components/grid.scss";
 import 'taro-skeleton/dist/index.css'
+import "taro-ui/dist/style/components/flex.scss";
+import "taro-ui/dist/style/components/grid.scss";
 import { error, log } from '../../until/log';
 import Result from '../../components/result';
-import Taro from '@tarojs/taro';
+import './index.scss';
 
 export default class Index extends Component {
 
@@ -39,15 +37,6 @@ export default class Index extends Component {
     this.getArticleData();
     // 名人导航接口
     this.getFamousNavData();
-
-    // 测试
-    Taro.request({
-      url:'http://192.168.1.42/test/public/',
-      success: function(res){
-        console.log('本地数据')
-        console.log(res.data)
-      }
-    })
   }
 
   getFamousNavData = async () => {
@@ -143,8 +132,10 @@ export default class Index extends Component {
                       </SwiperItem>)
                     })}
                   </Swiper>
-                ) : (
-                  <Result type='2' />)
+                )
+                  : (
+                    <Result type='2' />
+                  )
                 : (
                   <Result content={bannerErr} />
                 )
@@ -190,11 +181,12 @@ export default class Index extends Component {
                 famousNavData != [] ? (
                   famousNavData.map((item, index) => {
                     return (
-                      <View className='famous-nav-item' style={{ background: 'url(' + item.image + ')', backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%' }} onClick={(e) => toPage('/pages/people_list/index?type=' + item.url)}></View>
+                      <View key={index} className='famous-nav-item' style={{ background: 'url(' + item.image + ')', backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%' }} onClick={(e) => toPage('/pages/people_list/index?type=' + item.url)}></View>
                     )
                   })
-                ) : (<Result type='2' />)
-                : <Result content={famousNavDataErr} />
+                )
+              : (<Result type='2' />)
+              : <Result content={famousNavDataErr} />
             }
           </View>
         </View>
@@ -209,7 +201,8 @@ export default class Index extends Component {
                     className='line-item'
                     onClick={
                       e => this.navToPage(item)
-                    }>
+                    }
+                    key={index}>
                     <Image src={item.image} />
                   </View>
                 )

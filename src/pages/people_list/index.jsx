@@ -1,13 +1,15 @@
 import { Component } from 'react'
 import Taro, { getCurrentInstance } from '@tarojs/taro';
 import { View } from '@tarojs/components'
-import './index.scss';
+import { AtSearchBar } from 'taro-ui';
+import IPeople from '../../components/IPeople/i_people.jsx';
 import { getStorageValue, iShowToast, startLoading, stopLoading, toPage } from '../../until/util';
 import { queryUserList } from './api';
-import IPeople from '../../components/IPeople/i_people.jsx';
-import { AtSearchBar } from 'taro-ui';
 import Result from '../../components/result';
 import TaroScrollBar from '../../components/taro-scrollbar';
+
+import './index.scss';
+
 export default class Index extends Component {
 
     constructor(props) {

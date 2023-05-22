@@ -2,17 +2,19 @@ import { Component } from "react";
 import { View, Text, Image, RichText } from '@tarojs/components'
 import { AtTabs, AtTabsPane } from 'taro-ui'
 import Taro, { getCurrentInstance } from "@tarojs/taro";
-import "taro-ui/dist/style/components/flex.scss";
-import "taro-ui/dist/style/components/tabs.scss";
-import "taro-ui/dist/style/components/load-more.scss";
-import "taro-ui/dist/style/components/activity-indicator.scss";
+
 import tipPng from '../../resource/img/main/tip.png';
-import './index.scss';
 import { queryUserInfo } from "./api";
 import { getStorageValue, iShowToast, pageBack, startLoading, stopLoading } from "../../until/util";
 import IPeople from "../../components/IPeople/i_people.jsx";
 import Result from "../../components/result";
 import { log } from "../../until/log";
+
+import "taro-ui/dist/style/components/flex.scss";
+import "taro-ui/dist/style/components/tabs.scss";
+import "taro-ui/dist/style/components/load-more.scss";
+import "taro-ui/dist/style/components/activity-indicator.scss";
+import './index.scss';
 
 export default class Index extends Component {
 
@@ -48,7 +50,7 @@ export default class Index extends Component {
         })
 
         // setTimeout(() => {
-            // this.handleTextHight(value);
+        // this.handleTextHight(value);
         // }, 500); //防止dom没有加载完成
     }
 
@@ -102,8 +104,8 @@ export default class Index extends Component {
 
     handleTextHight = (index = 0) => {
         const query = Taro.createSelectorQuery()
-        log('index',index)
-        query.select(".r-text-"+index).fields({
+        log('index', index)
+        query.select(".r-text-" + index).fields({
             size: true
         });
         query.exec(res => {
@@ -175,14 +177,14 @@ export default class Index extends Component {
                                         >
                                             {
                                                 atContent.map((item, index) => {
-                                                    
+
                                                     return (
                                                         <AtTabsPane current={current} index={index}>
                                                             <View
                                                                 className='item'
-                                                                // style={{ height: defaultHeightOfInfo }}
+                                                            // style={{ height: defaultHeightOfInfo }}
                                                             >
-                                                                <RichText className={"r-text r-text-"+index } nodes={item.content} />
+                                                                <RichText className={"r-text r-text-" + index} nodes={item.content} />
                                                             </View>
                                                             {/* 显示 更多 按钮 */}
                                                             {/* {
@@ -212,10 +214,10 @@ export default class Index extends Component {
                                     </View>
                                 </View>
                                 <View className="content">
-                                    {lifeData.map((item) => {
+                                    {lifeData.map((item, index) => {
                                         const elem = item.data;
                                         return (
-                                            <View className="lifes at-row">
+                                            <View className="lifes at-row" key={index}>
                                                 <View className='item-life at-col-1'>
                                                     <Text className='text'>
                                                         {item.name}

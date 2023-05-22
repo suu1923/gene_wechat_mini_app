@@ -1,8 +1,29 @@
 // 全局变量，最后换成一个文件的
 $contentColot: #FFF3E5;
-
-.index {
-    scroll: none;
-
-
-}
+.tree {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .line {
+    width: 2px;
+    background-color: #000;
+    height: 100%;
+  }
+  
+  .nodes {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .node {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .content {
+    margin-left: 10px;
+  }
+  

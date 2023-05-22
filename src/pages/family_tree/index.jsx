@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { View, Text, Picker, Image, ScrollView } from '@tarojs/components'
-import './index.scss'
 import { getFamilyData, queryAllYear } from './api';
-import "taro-ui/dist/style/components/list.scss";
 import { chunk, iShowToast, startLoading, stopLoading, toChinesNum, toPage } from '../../until/util';
-import tipPng from '../../resource/img/main/tip.png';
-import "taro-ui/dist/style/components/flex.scss";
-import "taro-ui/dist/style/components/search-bar.scss";
-import "taro-ui/dist/style/components/button.scss";
 // 虚拟列表
 import { log } from '../../until/log';
 
+import tipPng from '../../resource/img/main/tip.png';
+import "taro-ui/dist/style/components/flex.scss";
+import "taro-ui/dist/style/components/list.scss";
+import "taro-ui/dist/style/components/search-bar.scss";
+import "taro-ui/dist/style/components/button.scss";
+import './index.scss'
 
 export default class Index extends Component {
 

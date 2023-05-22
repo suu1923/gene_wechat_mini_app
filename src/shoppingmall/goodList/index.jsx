@@ -1,17 +1,16 @@
 import { Component } from "react";
-import Taro from '@tarojs/taro'
 import { AtSearchBar, AtDrawer } from 'taro-ui'
 import { View, Image, Text } from '@tarojs/components'
+import { queryCategoryList } from "./api";
 
-import "taro-ui/dist/style/components/icon.scss";
-import "taro-ui/dist/style/components/search-bar.scss";
-import "taro-ui/dist/style/components/button.scss";
 import "taro-ui/dist/style/components/flex.scss";
 import "taro-ui/dist/style/components/drawer.scss";
 import "taro-ui/dist/style/components/list.scss";
+import "taro-ui/dist/style/components/search-bar.scss";
+import "taro-ui/dist/style/components/button.scss";
+import "taro-ui/dist/style/components/icon.scss";
 
 import "./index.scss"
-import { queryCategoryList } from "./api";
 
 
 export default class Index extends Component {
@@ -65,7 +64,7 @@ export default class Index extends Component {
         })
     }
     // 选中菜单后的事件
-    onDrawerChange(item){
+    onDrawerChange(item) {
         console.log(item)
     }
     render() {
@@ -97,7 +96,7 @@ export default class Index extends Component {
                             <View className="category-list">
                                 {categoryList.map((item, index) => {
                                     return (
-                                        <View className="category-item" onClick={(e)=>this.onDrawerChange(item.id)}>
+                                        <View className="category-item" onClick={(e) => this.onDrawerChange(item.id)}>
                                             <View className="category-content at-row">
                                                 <Image src={item.image} className='category-img'></Image>
                                                 <Text className="category-name">{item.name}</Text>

@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-
 import IPeopleNode from './i_people';
-import './i_people.scss';
+
 import "taro-ui/dist/style/components/flex.scss";
+import './i_people.scss';
 
 class IPeople extends Component {
 
 
-    constructor(props){
+    constructor(props) {
         // console.log(props)
         super(props)
     }
 
-    componentDidMount(){
+    componentDidMount() {
         const { data } = this.props;
     }
 
@@ -30,11 +30,11 @@ class IPeople extends Component {
      * @returns 
      */
 
-    render(){
+    render() {
         const { onClick } = this.props;
         return (
-            <IPeopleNode 
-                onClick={(e, nodeData)=> onClick && onClick(e, nodeData)}
+            <IPeopleNode
+                onClick={(e, nodeData) => onClick && onClick(e, nodeData)}
                 {...this.props}
             />
         )

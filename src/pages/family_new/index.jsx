@@ -1,18 +1,15 @@
 import React, { Component } from "react";
-import { View, Text, Picker, Image, ScrollView } from "@tarojs/components";
-import "./index.scss";
-import "taro-ui/dist/style/components/list.scss";
+import { View, Image, ScrollView } from "@tarojs/components";
 import {
-  chunk,
-  iShowToast,
-  startLoading,
-  stopLoading,
-  toChinesNum,
   toPage,
 } from "../../until/util";
+
+
 import "taro-ui/dist/style/components/flex.scss";
+import "taro-ui/dist/style/components/list.scss";
 import "taro-ui/dist/style/components/search-bar.scss";
 import "taro-ui/dist/style/components/button.scss";
+import "./index.scss";
 
 export default class Index extends Component {
   constructor(props) {
@@ -32,18 +29,39 @@ export default class Index extends Component {
     const mockData = [
       {
         id: 1,
-        name: "张三",
-        img: "https://php-web-gene.oss-cn-shenzhen.aliyuncs.com/test/1.jpg",
+        name: "总谱",
+        desc: "1-30世",
       },
       {
-        id: 2,
-        name: "李四",
-        img: "https://php-web-gene.oss-cn-shenzhen.aliyuncs.com/test/2.png",
+        id: 1,
+        name: "总谱",
+        desc: "始于1200年"
       },
       {
-        id: 2,
-        name: "李四",
-        img: "https://php-web-gene.oss-cn-shenzhen.aliyuncs.com/test/2.png",
+        id: 1,
+        name: "腾阳丁氏",
+        desc: "始于1200年"
+      }, {
+        id: 1,
+        name: "淄博丁氏",
+        desc: "始于1200年"
+      }, {
+        id: 1,
+        name: "济南丁氏",
+        desc: "始于1200年"
+      }, {
+        id: 1,
+        name: "枣庄丁氏",
+        desc: "始于1200年"
+      }, {
+        id: 1,
+        name: "济宁丁氏",
+        desc: "始于1200年"
+      },
+      {
+        id: 1,
+        name: "莱芜丁氏",
+        desc: "始于1200年"
       },
     ];
     this.setState({ familyData: mockData });
@@ -74,16 +92,6 @@ export default class Index extends Component {
                   toPage("/pages/family_new/new_tree/index?id=" + item.id)
                 }
               >
-                <Image
-                  src={item.img}
-                  mode="scaleToFill"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    boxShadow: "4px 4px 14px 0px #807f7f",
-                    borderRadius: "5%",
-                  }}
-                ></Image>
               </View>
             );
           })}

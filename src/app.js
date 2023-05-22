@@ -1,7 +1,6 @@
 import { Component } from 'react'
 import './app.scss'
 import { globalBg } from './until/util';
-import { View } from '@tarojs/components'
 
 class App extends Component {
 

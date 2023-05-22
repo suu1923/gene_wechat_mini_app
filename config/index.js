@@ -42,6 +42,10 @@ const config = {
     }
   },
   framework: 'react',
+  prebundle: {
+    enable: false,
+    force: true,
+  },
   mini: {
     postcss: {
       pxtransform: {
@@ -64,7 +68,9 @@ const config = {
         }
       }
     },
-    esnextModules: ['taro-ui', 'taro-skeleton']
+    esnextModules: ['taro-ui', 'taro-skeleton'],
+    // enableSourceMap: true, 
+    // enableExtract: false,
   },
   h5: {
     esnextModules: ['taro-ui', 'taro-skeleton']

@@ -1,12 +1,12 @@
 
 import { Component } from 'react'
 import { View, RichText } from '@tarojs/components'
-import { getNavContent, getTrainingData } from './api'
-import Taro, { getCurrentInstance } from '@tarojs/taro'
+import { getNavContent } from './api'
+import { getCurrentInstance } from '@tarojs/taro'
+import { formatContent, getStorageValue, iShowToast, setPageTitle } from '../../../until/util'
 
 import './index.scss'
 
-import { formatContent, getStorageValue, iShowToast, setPageTitle } from '../../../until/util'
 
 export default class Index extends Component {
 
@@ -36,6 +36,7 @@ export default class Index extends Component {
         const { data } = this.state;
         console.log(data)
         const bg_url = getStorageValue('bg_url')
+        console.log(bg_url)
         return (
             <View className='container' style={{ backgroundImage: 'url(' + bg_url + ')' }}>
                 <View className='content'>

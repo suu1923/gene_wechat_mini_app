@@ -44,7 +44,7 @@ export default defineAppConfig({
     }, {
       'iconPath': 'resource/gene.png',
       'selectedIconPath': 'resource/gene_on.png',
-      pagePath: 'pages/family_new/index',
+      pagePath: 'pages/family_new/new_tree/index',
       text: '族谱'
     },
     {

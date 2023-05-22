@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { View, RichText } from '@tarojs/components'
-import './index.scss'
 import Taro from '@tarojs/taro';
-import "taro-ui/dist/style/components/list.scss";
-import "taro-ui/dist/style/components/flex.scss";
-
-import "taro-ui/dist/style/components/search-bar.scss";
-import "taro-ui/dist/style/components/button.scss";
-import "taro-ui/dist/style/components/icon.scss";
 
 import { getArticleInfo } from '../api';
 import { getCurrentInstance } from '@tarojs/taro';
 import { formatContent, getStorageValue, startLoading, stopLoading } from '../../../until/util';
+
+
+import "taro-ui/dist/style/components/flex.scss";
+import "taro-ui/dist/style/components/list.scss";
+import "taro-ui/dist/style/components/search-bar.scss";
+import "taro-ui/dist/style/components/button.scss";
+import "taro-ui/dist/style/components/icon.scss";
+
+import './index.scss'
 
 export default class Index extends Component {
 
@@ -52,7 +54,7 @@ export default class Index extends Component {
         const { title, content } = this.state.data;
         const bg_url = getStorageValue('bg_url')
         return (
-            <View className='container' style={{backgroundImage:'url('+bg_url+')'}}>
+            <View className='container' style={{ backgroundImage: 'url(' + bg_url + ')' }}>
                 <View className='content'>
                     <View className='title'>
                         {title}
@@ -61,28 +63,7 @@ export default class Index extends Component {
                         <RichText className='info' nodes={formatContent(content)} />
                     </View>
                 </View>
-                {/* 
-                <View className='operate'>
-                    <View className='at-row box'>
-                        <View className='comment at-col-6'>
-                            <AtSearchBar
-                                actionName='发送'
-                                value={this.state.value}
-                                onChange={this.onChange.bind(this)}
-                            />
-                        </View>
-                        <View className='at-col-1'></View>
-                        <View className='like at-col-2 at-icon at-icon-heart'>
-                            22
-                        </View>
-                        <View className='favorite at-col-2 at-icon at-icon-star'>
-                            22
-                        </View>
-
-                    </View>
-                </View> */}
             </View>
-
         )
     }
 }
