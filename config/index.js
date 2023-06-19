@@ -69,10 +69,11 @@ const config = {
       }
     },
     esnextModules: ['taro-ui', 'taro-skeleton'],
-    // enableSourceMap: true, 
-    // enableExtract: false,
   },
   h5: {
+    devServer: {
+      hot: false,
+    },
     esnextModules: ['taro-ui', 'taro-skeleton']
   }
 }

@@ -228,12 +228,12 @@ export default class Index extends Component {
                                                         return (
                                                             <View className="info-box" >
                                                                 {
-                                                                    (value.wife != undefined && value.wife != null && value.wife != "") &&
+                                                                    (value.spouse != undefined && value.spouse != null && value.spouse != "") &&
                                                                     (
-                                                                        <View className="wife">
-                                                                            {value.wife.split(',').map((v, i) => {
+                                                                        <View className="spouse">
+                                                                            {value.spouse.split(',').map((v, i) => {
                                                                                 return (
-                                                                                    <View className="label-wife-son">
+                                                                                    <View className="label-spouse-son">
                                                                                         <View className="label-dot"></View>
                                                                                         {v}
                                                                                     </View>

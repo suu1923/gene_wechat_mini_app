@@ -1,115 +1,60 @@
 import React, { Component } from "react";
-import { ScrollView, View } from "@tarojs/components";
+import { View } from "@tarojs/components";
 import "./index.scss";
 import TimelineComponent from "../../components/custom-timeline/TimelineComponent";
+import { getFamilyGroupData } from "./api";
+import { eventCenter, getCurrentInstance, nextTick } from "@tarojs/taro";
+import { toPage } from "../../until/util";
 
 export default class Index extends Component {
+  $instance = getCurrentInstance()
   constructor(props) {
     super(props);
     this.state = {
-      familyData: [
-        {
-          id: 1,
-          name: "总谱",
-          desc: "1-30世",
-        },
-        {
-          id: 1,
-          name: "总谱2",
-          desc: "始于1200年",
-        },
-        {
-          id: 1,
-          name: "腾阳丁氏",
-          desc: "始于1200年",
-        },
-        {
-          id: 1,
-          name: "淄博丁氏",
-          desc: "始于1200年",
-        },
-        {
-          id: 1,
-          name: "济南丁氏",
-          desc: "始于1200年",
-        },
-        {
-          id: 1,
-          name: "枣庄丁氏",
-          desc: "始于1200年",
-        },
-        {
-          id: 1,
-          name: "枣庄丁氏",
-          desc: "始于1200年",
-        },
-        {
-          id: 1,
-          name: "济宁丁氏",
-          desc: "始于1200年",
-        },
-        {
-          id: 1,
-          name: "莱芜丁氏",
-          desc: "始于1200年",
-        },
-        {
-          id: 1,
-          name: "莱芜丁氏2",
-          desc: "始于1200年",
-        },
-        {
-          id: 1,
-          name: "莱芜丁氏3",
-          desc: "始于1200年",
-        },
-      ],
+      familyData: [],
     };
   }
 
-  componentDidMount() {
-    // this.getFamilyList();
+  componentWillMount() {
+    const onReadyEventId = this.$instance.router.onReady
+    eventCenter.once(onReadyEventId, () => {
+      console.log('onReady')
+      this.getFamilyList();
+    })
   }
 
-  getFamilyList() {
-    // Mock数据，后期需要修改
-    // 格式为id,name,img
-    const mockData = [];
-    this.setState({ familyData: mockData });
-  }
+  getFamilyList = async () => {
+    try {
+      const { data } = await getFamilyGroupData();
+      console.log('data', data);
+      this.setState({ familyData: data });
 
+    } catch (e) {
+      Taro.showToast({
+        title: '获取数据失败',
+        icon: 'error',
+        duration: 2000
+      })
+      console.log(e)
+    }
+  }
+  handleItemClick(item) {
+    // 处理点击事件
+    console.log('点击了:', item);
+    toPage('new_tree/index?id=' + item.id)
+  }
   render() {
-    const timelineData = [
-      // {
-      //   text: "Started working on the app-ideas repository",
-      //   date: "February 25 2019",
-      //   category: {
-      //     tag: "app-ideas",
-      //     color: "#FFDB14",
-      //   },
-      //   link: {
-      //     url: "https://github.com/florinpop17/app-ideas",
-      //     text: "Check it out on GitHub",
-      //   },
-      // },
-      ...this.state.familyData.map((item) => ({
-        text: item.name,
-        date: item.desc,
-        category: {
-          tag: "",
-          color: "",
-        },
-        link: {
-          url: "",
-          text: "",
-        },
-      })),
-      // Add more timeline data here...
-    ];
+    const { familyData } = this.state;
+    if (!familyData) {
+      return null;
+    }
     return (
-      // <ScrollView scroll-y={true}>
-      <View>
-        <TimelineComponent timelineData={timelineData} />
+      <View className="container">
+        <TimelineComponent
+          data={familyData}
+          color="#E7C48D"
+          onItemClick={this.handleItemClick.bind(this)}
+        />
       </View>
     );
   }

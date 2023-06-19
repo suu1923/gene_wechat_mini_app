@@ -174,7 +174,7 @@ export default class Index extends Component {
                 ref={this.formRef}
                 defaultValue={{
                   gender: "1",
-                  wife: '',
+                  spouse: '',
                   desc: ''
                 }}
                 onValueChange={(diff) => {
@@ -233,7 +233,7 @@ export default class Index extends Component {
                 <FormTextInput
                   label='配偶'
                   fieldProps={{
-                    name: 'wife',
+                    name: 'spouse',
                     placeholder: '请输入配偶名字'
                   }}
                 />

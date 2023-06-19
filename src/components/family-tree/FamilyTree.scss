@@ -1,5 +1,100 @@
-.family-tree {
-    width: 100vw;
-    height: 100vh;
-  }
-  
+.tree-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-super-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-sons-container {
+  display: flex;
+  align-items: center;
+  // padding-left: 150rpx;
+  // padding-right: 150rpx;
+}
+
+.user-container {
+  width: 96rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-info {
+  overflow: hidden;
+}
+
+.user-name {
+  width: 96rpx;
+  height: 32rpx;
+  border-radius: 4rpx;
+  background-color: #bbb;
+  display: flex;
+}
+
+.user-name-text {
+  font-size: 20rpx;
+  width: 80rpx;
+  margin-left: 2rpx;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  align-content: center;
+}
+
+// 水平线默认样式
+.horizontal-line {
+  width: 50%;
+  height: 5rpx;
+  background-color: #000000;
+}
+
+// 垂直线默认样式
+.vertical-line {
+  width: 5rpx;
+  height: 50rpx;
+  background-color: #000000;
+}
+
+
+
+// .left-top-radius {
+//   border-top-left-radius: 2rpx;
+// }
+
+// .right-top-radius {
+//   border-top-right-radius: 2rpx;
+// }
+
+.first-line {
+  width: 50%;
+  margin-left: 50%;
+}
+
+.last-line {
+  width: 50%;
+  margin-right: 50%;
+}
+
+.children-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.children-super {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

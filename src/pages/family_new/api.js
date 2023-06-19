@@ -1,8 +1,23 @@
 
-import { get } from '../../until/request';
+import { get, post } from '../../until/request';
+/**
+ * @desc 获取族谱数据
+ * @param {*} data 
+ * @returns 
+ */
 export const getFamilyData = (data) => {
-    return get('/api/family/index',{...data});
+    return post('/api/family/index', { ...data });
 }
+
+/**
+ * @desc 获取族谱分组数据
+ * @param {*} data 
+ * @returns 
+ */
+export const getFamilyGroupData = (data) => {
+    return post('/api/family_group/index', { ...data });
+}
+
 
 /**
  * @desc 获取全部年份
@@ -13,7 +28,7 @@ export const queryAllYear = () => {
 }
 
 export const getUserListByRank = (rank) => {
-    return get('/api/family/getUserListByRank',{
+    return get('/api/family/getUserListByRank', {
         rank: rank
     })
 }
