@@ -38,24 +38,20 @@ export default class Index extends Component {
 
 			// onReady 触发后才能获取小程序渲染层的节点
 			const { windowWidth, windowHeight } = this;
-			Taro.createSelectorQuery()
-				.in(this)
-				.select('#rootTree')
-				.boundingClientRect((rect) => {
-					console.log('rect', rect);
-					this.setState({
-						width: rect.width > windowWidth ? rect.width : windowWidth,
-						height: rect.height > windowHeight ? rect.height : windowHeight,
+			setTimeout(() => {
+				Taro.createSelectorQuery()
+					.select('#rootTree ')
+					.boundingClientRect((rect) => {
+						console.log('rect', rect);
+						this.setState({
+							height: rect.height > windowHeight ? rect.height : windowHeight,
+						});
+					})
+					.exec((res) => {
+						console.log('res', res);
 					});
-				})
-				.exec((res) => {
-					console.log('res', res);
-				});
+			}, 1000);
 		})
-	}
-
-	componentDidMount() {
-
 	}
 
 	getFamilyTreeData = async () => {
@@ -77,12 +73,10 @@ export default class Index extends Component {
 					familyTreeData: data[0],
 				},
 			);
-			console.log('familyTreeData2', this.state.familyTreeData);
 		} catch (err) {
 			console.log('err', err);
 		}
 	};
-
 
 	handleItemClick(item) {
 		// 处理点击事件
@@ -96,58 +90,56 @@ export default class Index extends Component {
 			return null;
 		}
 		return (
-			<View className="container" style={{ backgroundColor: '#F7F7F7' }}>
-				<MovableArea className="movable-area">
-					<MovableView
-						scale
-						inertia
-						outOfBounds
-						direction="all"
-						id="rootTree"
-						style={{
-							width: (width === 0 ? 'auto' : `${width}rpx`),
-							height: (height === 0 ? 'auto' : `${height}rpx`)
-						}}
-						x={0}
-						y={0}
-					>
+			<MovableArea className="movable-area">
+				<MovableView
+					scale
+					inertia
+					outOfBounds
+					direction="all"
+					id="rootTree"
+					style={{
+						width: (width === 0 ? 'auto' : `${width}rpx`),
+						height: (height === 0 ? 'auto' : `${height}rpx`)
+					}}
+					x="100%"
+					y={height + 'rpx'}
+				>
 
-						<TreeChartItem
-							dataSource={familyTreeData}
-							onItemClick={this.handleItemClick.bind(this)}
-							bgColor="#F7F7F7"
-							horizontalLineColor="#E7C48D"
-							verticalLineColor="#E7C48D"
-							childrenKey="childlist"
-							renderItem={item => (
-								<View className="custom-user-info">
-									<View class="info-spouse-box">
-										<Text lines="1" class="info-spouse-text">{item.spouse}</Text>
-									</View>
-									<View class="info-family-number-box">
-										<View class="dot" style={{ backgroundColor: 'rgba(29, 61, 99, 1.000000)' }}></View>
-										<Text lines="1" class="info-family-number-text" style={item.gender === 1 ? 'color: rgba(29, 61, 99, 1);' : 'color: rgba(156,0,0,1);'}>长子</Text>
-									</View>
-									<View class="info-name">
-										<View class="dot" style={{ backgroundColor: 'rgba(130, 69, 4, 1.000000)' }}></View>
-										<Text lines="1" class="info-name-text">{item.name}</Text>
-									</View>
-									<View style={{ borderLeft: '2px dashed #824504', marginLeft: '12rpx' }}>
-									</View>
-									<View class="info-rank-box">
-										<View class="info-rank-box-dot"></View>
-										<Text lines="1" class="info-rank-text">{item.ranks}</Text>
-										<View class="info-gender-box">
-											<Text lines="1" class="info-gender-text">{item.gender === 1 ? '男' : '女'}</Text>
-										</View>
+					<TreeChartItem
+						dataSource={familyTreeData}
+						onItemClick={this.handleItemClick.bind(this)}
+						bgColor="#F7F7F7"
+						horizontalLineColor="#E7C48D"
+						verticalLineColor="#E7C48D"
+						childrenKey="childlist"
+						renderItem={item => (
+							<View className="custom-user-info">
+								<View class="info-spouse-box">
+									<Text lines="1" class="info-spouse-text">{item.spouse}</Text>
+								</View>
+								<View class="info-family-number-box">
+									<View class="dot" style={{ backgroundColor: 'rgba(29, 61, 99, 1.000000)' }}></View>
+									<Text lines="1" class="info-family-number-text" style={item.gender === 1 ? 'color: rgba(29, 61, 99, 1);' : 'color: rgba(156,0,0,1);'}>长子</Text>
+								</View>
+								<View class="info-name">
+									<View class="dot" style={{ backgroundColor: 'rgba(130, 69, 4, 1.000000)' }}></View>
+									<Text lines="1" class="info-name-text">{item.name}</Text>
+								</View>
+								<View style={{ borderLeft: '2px dashed #824504', marginLeft: '12rpx' }}>
+								</View>
+								<View class="info-rank-box">
+									<View class="info-rank-box-dot"></View>
+									<Text lines="1" class="info-rank-text">{item.ranks}</Text>
+									<View class="info-gender-box">
+										<Text lines="1" class="info-gender-text">{item.gender === 1 ? '男' : '女'}</Text>
 									</View>
 								</View>
-							)}
-							itemMargin="100rpx"
-						/>
-					</MovableView>
-				</MovableArea>
-			</View >
+							</View>
+						)}
+						itemMargin="100rpx"
+					/>
+				</MovableView>
+			</MovableArea>
 		);
 	}
 }

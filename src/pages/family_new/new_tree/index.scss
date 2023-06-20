@@ -1,12 +1,16 @@
-.container {
-  width: auto;
-  height: auto;
+page {
+  background-color: #F7F7F7;
 }
 
-.movable-view {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.movable-area {
+  width: 100%;
+
+  .movable-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 }
 
 .custom-user-info {
